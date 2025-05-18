@@ -1,0 +1,17 @@
+@startuml C4_CQRS_ES
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, "Usuário")
+
+System_Boundary(cqrs, "Sistema CQRS + Event Sourcing") {
+  Container(cmd, "Command API", "Spring Boot", "Recebe comandos")
+  ContainerDb(events, "Event Store", "EventStoreDB", "Armazena eventos")
+  Container(query, "Query API", "Node.js", "Consulta dados projetados")
+  ContainerDb(read_db, "Read DB", "MongoDB", "Projeções otimizadas")
+}
+
+Rel(user, cmd, "Envia comandos")
+Rel(cmd, events, "Persiste eventos")
+Rel(events, query, "Propaga eventos")
+Rel(query, read_db, "Lê e escreve projeções")
+@enduml

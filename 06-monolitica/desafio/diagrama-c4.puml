@@ -1,0 +1,12 @@
+@startuml C4_Monolithic
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, "Usuário")
+System_Boundary(monolith, "Sistema Monolítico") {
+  Container(app, "Aplicação", "Spring MVC", "Contém todas as funcionalidades")
+  ContainerDb(db, "Banco de Dados", "MySQL", "Armazena dados da aplicação")
+}
+
+Rel(user, app, "Interage")
+Rel(app, db, "Lê e escreve")
+@enduml

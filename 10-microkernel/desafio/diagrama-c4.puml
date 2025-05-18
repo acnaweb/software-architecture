@@ -1,0 +1,15 @@
+@startuml C4_Microkernel
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(admin, "Administrador")
+
+System_Boundary(kernel, "Sistema com Microkernel") {
+  Container(core, "Core da Aplicação", "Java", "Núcleo da plataforma")
+  Container(plugin1, "Plugin A", "Java Module", "Funcionalidade estendida A")
+  Container(plugin2, "Plugin B", "Java Module", "Funcionalidade estendida B")
+}
+
+Rel(admin, core, "Gerencia")
+Rel(core, plugin1, "Carrega dinamicamente")
+Rel(core, plugin2, "Carrega dinamicamente")
+@enduml

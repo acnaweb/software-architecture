@@ -1,0 +1,19 @@
+@startuml C4_DDD
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, "Usuário")
+
+System_Boundary(BC1, "Bounded Context: Vendas") {
+  Container(sales_api, "API Vendas", "Spring Boot", "Interface REST")
+  ContainerDb(sales_db, "DB Vendas", "PostgreSQL", "Dados de vendas")
+}
+
+System_Boundary(BC2, "Bounded Context: Faturamento") {
+  Container(invoice_api, "API Faturamento", "Node.js", "Interface REST")
+  ContainerDb(invoice_db, "DB Faturamento", "MongoDB", "Dados de faturas")
+}
+
+Rel(user, sales_api, "Interage")
+Rel(sales_api, sales_db, "Consulta")
+Rel(invoice_api, invoice_db, "Grava")
+@enduml

@@ -1,0 +1,14 @@
+@startuml C4_Serverless
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, "Cliente")
+System_Boundary(serverless, "Sistema Serverless") {
+  Container(api, "API Gateway", "Cloud Provider", "Roteia chamadas HTTP")
+  Container(fn, "Função", "Cloud Function", "Executa lógica sob demanda")
+  ContainerDb(db, "Banco de Dados", "Firestore", "Persistência de dados")
+}
+
+Rel(user, api, "Envia requisição")
+Rel(api, fn, "Invoca função")
+Rel(fn, db, "Consulta e grava")
+@enduml
