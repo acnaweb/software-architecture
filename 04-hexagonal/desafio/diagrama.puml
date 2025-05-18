@@ -1,0 +1,15 @@
+@startuml
+title Arquitetura Hexagonal
+
+component "Core de Negócio" as core
+component "Portas (Interfaces)" as ports
+component "Adaptadores (Drivers)" as adapters
+actor "Usuário" as user
+database "Sistema Externo" as external
+
+user --> adapters
+adapters --> ports
+ports --> core
+core --> ports
+ports --> external
+@enduml

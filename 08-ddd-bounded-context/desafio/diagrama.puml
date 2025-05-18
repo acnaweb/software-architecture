@@ -1,0 +1,15 @@
+@startuml
+title DDD com Bounded Context
+
+actor "Usuário"
+rectangle "Contexto A" {
+  component "Serviço A1"
+  database "DB A"
+}
+rectangle "Contexto B" {
+  component "Serviço B1"
+  database "DB B"
+}
+"Usuário" --> "Serviço A1"
+"Usuário" --> "Serviço B1"
+@enduml

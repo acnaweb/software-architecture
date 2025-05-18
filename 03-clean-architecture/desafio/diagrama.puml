@@ -1,0 +1,16 @@
+@startuml
+title Clean Architecture
+
+actor "Usuário" as user
+component "Interface de Entrada" as input
+component "Use Cases" as usecases
+component "Entidades" as entities
+component "Adaptadores" as adapters
+database "Infraestrutura" as infra
+
+user --> input
+input --> usecases
+usecases --> entities
+usecases --> adapters
+adapters --> infra
+@enduml

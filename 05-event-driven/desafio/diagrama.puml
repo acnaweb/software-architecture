@@ -1,0 +1,12 @@
+@startuml
+title Arquitetura Orientada a Eventos
+
+actor "Produtor de Evento" as producer
+queue "Event Bus (Kafka/RabbitMQ)" as bus
+component "Consumidor A"
+component "Consumidor B"
+
+producer --> bus
+bus --> "Consumidor A"
+bus --> "Consumidor B"
+@enduml

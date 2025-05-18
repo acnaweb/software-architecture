@@ -1,0 +1,14 @@
+@startuml
+title CQRS + Event Sourcing
+
+actor "Usuário" as user
+component "Command Handler"
+database "Event Store"
+component "Query Handler"
+database "Read DB"
+
+user --> "Command Handler"
+"Command Handler" --> "Event Store"
+"Event Store" --> "Query Handler"
+"Query Handler" --> "Read DB"
+@enduml

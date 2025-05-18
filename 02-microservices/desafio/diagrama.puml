@@ -1,0 +1,13 @@
+@startuml
+title Arquitetura de Microserviços
+
+actor "Cliente" as client
+rectangle "API Gateway" {
+  [Service A] --> [DB A]
+  [Service B] --> [DB B]
+  [Service C] --> [DB C]
+}
+client --> [Service A]
+client --> [Service B]
+client --> [Service C]
+@enduml

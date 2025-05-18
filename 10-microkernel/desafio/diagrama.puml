@@ -1,0 +1,12 @@
+@startuml
+title Arquitetura Microkernel
+
+actor "Usuário"
+component "Core"
+component "Plugin A"
+component "Plugin B"
+
+"Usuário" --> "Core"
+"Core" --> "Plugin A"
+"Core" --> "Plugin B"
+@enduml

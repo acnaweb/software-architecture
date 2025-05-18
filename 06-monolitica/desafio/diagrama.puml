@@ -1,0 +1,10 @@
+@startuml
+title Arquitetura Monolítica
+
+actor "Usuário" as user
+component "Aplicação Monolítica" as app
+database "Banco de Dados" as db
+
+user --> app
+app --> db
+@enduml

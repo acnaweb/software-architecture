@@ -1,0 +1,12 @@
+@startuml
+title Arquitetura Serverless
+
+actor "Cliente" as client
+cloud "API Gateway"
+component "Função Lambda" as lambda
+database "Banco de Dados" as db
+
+client --> "API Gateway"
+"API Gateway" --> lambda
+lambda --> db
+@enduml

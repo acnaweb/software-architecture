@@ -1,0 +1,14 @@
+@startuml
+title Arquitetura em Camadas
+
+actor "Usuário" as user
+component "Apresentação" as ui
+component "Serviço" as service
+component "Regras de Negócio" as domain
+database "Repositório" as repo
+
+user --> ui
+ui --> service
+service --> domain
+domain --> repo
+@enduml
