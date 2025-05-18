@@ -2,6 +2,6 @@ repos:
   - repo: local
     hooks:
       - id: render-diagramas
-        name: Renderiza diagramas PlantUML
+        name: Renderiza diagramas PlantUMLgit p
         entry: make render
         language: system        
