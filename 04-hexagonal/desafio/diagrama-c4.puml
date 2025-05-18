@@ -1,0 +1,14 @@
+@startuml C4_Hexagonal
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, "Usuário")
+System_Boundary(s, "Aplicação Hexagonal") {
+  Container(core, "Core", "Domínio", "Lógica de negócio pura")
+  Container(port, "Portas", "Interfaces", "Interfaces de entrada/saída")
+  Container(adapter, "Adaptadores", "REST/Fila", "Adaptadores concretos")
+}
+
+Rel(user, adapter, "Interage")
+Rel(adapter, port, "Implementa")
+Rel(port, core, "Invoca")
+@enduml

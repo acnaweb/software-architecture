@@ -1,0 +1,17 @@
+@startuml C4_Layered
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, "Usuário", "Interage com o sistema")
+System_Boundary(s, "Sistema em Camadas") {
+  Container(ui, "Camada de Apresentação", "Angular/React", "Interface com o usuário")
+  Container(app, "Camada de Aplicação", "Spring/.NET", "Orquestra regras de negócio")
+  Container(domain, "Camada de Domínio", "Java/C#", "Contém as regras de negócio")
+  Container(db, "Banco de Dados", "PostgreSQL", "Armazena dados persistentes")
+}
+
+Rel(user, ui, "Usa")
+Rel(ui, app, "Faz requisições para")
+Rel(app, domain, "Executa regras de negócio")
+Rel(domain, db, "Lê e escreve")
+
+@enduml

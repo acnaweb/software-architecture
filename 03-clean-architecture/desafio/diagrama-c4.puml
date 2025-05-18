@@ -1,0 +1,17 @@
+@startuml C4_CleanArchitecture
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, "Usuário")
+System_Boundary(s, "Sistema") {
+  Container(ui, "Interface de Entrada", "REST Controller", "Recebe as requisições")
+  Container(useCases, "Casos de Uso", "Aplicação", "Orquestra regras de negócio")
+  Container(entities, "Entidades", "Domínio", "Modela o negócio")
+  Container(interface, "Interface Infra", "Adaptador", "Comunica com banco e serviços")
+}
+
+Rel(user, ui, "Interage")
+Rel(ui, useCases, "Invoca")
+Rel(useCases, entities, "Executa lógica")
+Rel(useCases, interface, "Acessa dados externos")
+
+@enduml

@@ -1,0 +1,16 @@
+@startuml C4_EventDriven
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, "Produtor de Evento")
+System_Boundary(s, "Sistema Event-Driven") {
+  Container(pub, "Publicador", "Java", "Publica eventos")
+  Container(bus, "Event Bus", "Kafka", "Intermediador")
+  Container(subA, "Consumidor A", "Node.js", "Executa tarefa A")
+  Container(subB, "Consumidor B", "Python", "Executa tarefa B")
+}
+
+Rel(user, pub, "Aciona")
+Rel(pub, bus, "Publica evento")
+Rel(bus, subA, "Entrega evento")
+Rel(bus, subB, "Entrega evento")
+@enduml

@@ -1,0 +1,14 @@
+@startuml C4_Microservices
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, "Usuário")
+System_Boundary(gateway, "API Gateway") {
+  Container(msa, "Serviço A", "Spring Boot", "Gerencia pedidos")
+  Container(msb, "Serviço B", "Node.js", "Gerencia pagamentos")
+  Container(msc, "Serviço C", "Python", "Gerencia entregas")
+}
+
+Rel(user, msa, "Usa via gateway")
+Rel(msa, msb, "Chama")
+Rel(msb, msc, "Chama")
+@enduml
